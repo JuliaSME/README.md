@@ -1,14 +1,21 @@
-per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
+tickets = int(input("Введите количество необходимых билетов: "))
+person = 1
 
-money = int(input("Вводите сумму, которую планируете положить под проценты:"))
+cash = 0
+while person<= tickets:
+    age_for_ticket = int(input(f'Укажите для какого возраста приобретается билет № {person} ? '))
+    if age_for_ticket < 18:
+        print('Билет бесплатный')
+    elif 25 > age_for_ticket >= 18:
+        cash += 990
+        print('Стоимость билета: 990 руб.')
+    else:
+        cash += 1390
+        print('Стоимость билета: 1390 руб.')
+    person += 1
 
-TKB = int((per_cent['ТКБ']) * (money/100))
-SKB = int((per_cent['СКБ']) * (money/100))
-VTB = int((per_cent['ВТБ']) * (money/100))
-SBER = int((per_cent['СБЕР']) * (money/100))
-
-deposit = [TKB, SKB, VTB, SBER]
-
-print("Накопленные средства за год вклада в каждом из банков =",deposit)
-
-print("Максимальная сумма, которую вы можете заработать:", max(deposit))
+if tickets > 3:
+    sale = cash - ((cash / 100) * 10)
+    print(f'Сумма к оплате {sale} руб., применена 10%-ая скидка за покупку более 3 билетов единовременно')
+else:
+    print(f'Сумма к оплате {cash} руб.')
